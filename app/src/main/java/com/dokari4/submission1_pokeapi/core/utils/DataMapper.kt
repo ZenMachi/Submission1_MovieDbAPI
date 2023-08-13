@@ -37,6 +37,7 @@ object DataMapper {
         }
 
     fun mapDomainToEntity(input: Movie) = MovieEntity(
+        id = input.id,
         movieId = input.movieId,
         title = input.title,
         overview = input.overview,

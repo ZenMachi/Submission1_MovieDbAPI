@@ -32,7 +32,7 @@ data class MovieEntity(
     var backdropPath: String,
 
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean
+    var isFavorite: Boolean = false
 
 
 ) : Parcelable

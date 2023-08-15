@@ -3,6 +3,7 @@ package com.dokari4.submission1_pokeapi.core.data.local
 import androidx.lifecycle.LiveData
 import com.dokari4.submission1_pokeapi.core.data.local.entity.MovieEntity
 import com.dokari4.submission1_pokeapi.core.data.local.room.MovieDao
+import io.reactivex.Flowable
 
 class LocalDataSource private constructor(private val movieDao: MovieDao) {
 
@@ -15,9 +16,9 @@ class LocalDataSource private constructor(private val movieDao: MovieDao) {
             }
     }
 
-    fun getMovieList(): LiveData<List<MovieEntity>> = movieDao.getMovieList()
+    fun getMovieList(): Flowable<List<MovieEntity>> = movieDao.getMovieList()
 
-    fun getFavoriteMovie(): LiveData<List<MovieEntity>> = movieDao.getFavoriteMovie()
+    fun getFavoriteMovie(): Flowable<List<MovieEntity>> = movieDao.getFavoriteMovie()
 
     fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
 

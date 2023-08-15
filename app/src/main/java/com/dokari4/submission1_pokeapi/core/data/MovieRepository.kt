@@ -10,6 +10,9 @@ import com.dokari4.submission1_pokeapi.core.utils.AppExecutors
 import com.dokari4.submission1_pokeapi.core.utils.DataMapper
 import com.dokari4.submission1_pokeapi.domain.model.Movie
 import com.dokari4.submission1_pokeapi.domain.repository.IMovieRepository
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 class MovieRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
@@ -32,30 +35,33 @@ class MovieRepository private constructor(
     }
 
 
-    override fun getMovieList(): LiveData<Resource<List<Movie>>> =
+    override fun getMovieList(): Flowable<Resource<List<Movie>>> =
         object : NetworkBoundResource<List<Movie>, List<MovieResponse>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<Movie>> {
+            override fun loadFromDB(): Flowable<List<Movie>> {
                 return localDataSource.getMovieList().map {
                     DataMapper.mapEntitiesToDomain(it)
                 }
             }
 
-            override fun createCall(): LiveData<ApiResponse<List<MovieResponse>>> =
+            override fun createCall(): Flowable<ApiResponse<List<MovieResponse>>> =
                 remoteDataSource.getMovieList()
 
 
             override fun saveCallResult(data: List<MovieResponse>) {
                 val movieList = DataMapper.mapResponsesToEntities(data)
                 localDataSource.insertMovie(movieList)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe()
             }
 
             override fun shouldFetch(data: List<Movie>?): Boolean =
                 data.isNullOrEmpty()
 
 
-        }.asLiveData()
+        }.asFlowable()
 
-    override fun getFavoriteMovie(): LiveData<List<Movie>> {
+    override fun getFavoriteMovie(): Flowable<List<Movie>> {
         return localDataSource.getFavoriteMovie().map {
             DataMapper.mapEntitiesToDomain(it)
         }

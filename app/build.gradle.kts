@@ -49,6 +49,12 @@ val retrofitVersion = rootProject.extra["retrofit_version"]
 val loggingInterceptorVersion = rootProject.extra["logging_interceptor_version"]
 val kotlinVersion = rootProject.extra["kotlin_version"]
 
+val lifecycleVersion = rootProject.extra["lifecycle_version"]
+
+val rxLifecycleVersion = rootProject.extra["rxlifecycle_version"]
+val rxAndroidVersion = rootProject.extra["rxandroid_version"]
+val rxJavaVersion = rootProject.extra["rxjava_version"]
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
@@ -59,13 +65,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    val lifecycle_version = "2.6.1"
-
     // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     // Saved state module for ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion")
 
     implementation ("com.github.bumptech.glide:glide:$glideVersion")
 
@@ -76,4 +79,10 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
     implementation ("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
+
+    implementation ("io.reactivex.rxjava2:rxjava:$rxJavaVersion")
+    implementation ("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
+    implementation ("androidx.room:room-rxjava2:$roomVersion")
+    implementation ("androidx.lifecycle:lifecycle-reactivestreams-ktx:$rxLifecycleVersion")
 }

@@ -5,8 +5,9 @@ import com.dokari4.submission1_pokeapi.core.data.Resource
 import com.dokari4.submission1_pokeapi.domain.model.Movie
 import com.dokari4.submission1_pokeapi.domain.repository.IMovieRepository
 import io.reactivex.Flowable
+import javax.inject.Inject
 
-class MovieUseCaseImpl(private val movieRepository: IMovieRepository): MovieUseCase {
+class MovieUseCaseImpl @Inject constructor(private val movieRepository: IMovieRepository): MovieUseCase {
     override fun getMovieList(): Flowable<Resource<List<Movie>>> =
         movieRepository.getMovieList()
 

@@ -1,16 +1,20 @@
-package com.dicoding.tourismapp.core.data.source.remote.network
+package com.dokari4.submission1_pokeapi.core.di
 
+import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
+import dagger.Module
+import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import java.util.concurrent.TimeUnit
 
-object ApiConfig {
+@Module
+class NetworkModule {
 
-    private fun provideOkHttpClient(): OkHttpClient {
+    @Provides
+    fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
@@ -19,6 +23,8 @@ object ApiConfig {
 
     }
 
+    //To Provide in RemoteDataSource
+    @Provides
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/")

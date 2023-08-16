@@ -4,7 +4,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -13,6 +13,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dokari4.submission1_moviedbapi"
+        multiDexEnabled = true
         minSdk = 14
         targetSdk = 33
         versionCode = 1
@@ -43,6 +44,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 val glideVersion = rootProject.extra["glide_version"]
 val roomVersion = rootProject.extra["room_version"]
 val retrofitVersion = rootProject.extra["retrofit_version"]
@@ -54,6 +59,12 @@ val lifecycleVersion = rootProject.extra["lifecycle_version"]
 val rxLifecycleVersion = rootProject.extra["rxlifecycle_version"]
 val rxAndroidVersion = rootProject.extra["rxandroid_version"]
 val rxJavaVersion = rootProject.extra["rxjava_version"]
+
+val daggerVersion = rootProject.extra["dagger_version"]
+
+val activityKtxVersion = rootProject.extra["activity_ktx_version"]
+val fragmentKtxVersion = rootProject.extra["fragment_ktx_version"]
+
 
 dependencies {
 
@@ -73,7 +84,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:$glideVersion")
 
     implementation ("androidx.room:room-runtime:$roomVersion")
-    kapt ("androidx.room:room-compiler:$roomVersion")
+    ksp ("androidx.room:room-compiler:$roomVersion")
     androidTestImplementation ("androidx.room:room-testing:$roomVersion")
 
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
@@ -85,4 +96,12 @@ dependencies {
     implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
     implementation ("androidx.room:room-rxjava2:$roomVersion")
     implementation ("androidx.lifecycle:lifecycle-reactivestreams-ktx:$rxLifecycleVersion")
+
+    implementation ("com.google.dagger:dagger:$daggerVersion")
+    kapt ("com.google.dagger:dagger-compiler:$daggerVersion")
+
+    implementation ("androidx.activity:activity-ktx:$activityKtxVersion")
+    implementation ("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
+
+
 }

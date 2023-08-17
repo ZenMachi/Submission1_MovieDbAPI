@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -65,6 +66,8 @@ val daggerVersion = rootProject.extra["dagger_version"]
 val activityKtxVersion = rootProject.extra["activity_ktx_version"]
 val fragmentKtxVersion = rootProject.extra["fragment_ktx_version"]
 
+val hiltVersion = rootProject.extra["hilt_version"]
+
 
 dependencies {
 
@@ -102,6 +105,9 @@ dependencies {
 
     implementation ("androidx.activity:activity-ktx:$activityKtxVersion")
     implementation ("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
+
+    implementation ("com.google.dagger:hilt-android:$hiltVersion")
+    kapt ("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
 
 }

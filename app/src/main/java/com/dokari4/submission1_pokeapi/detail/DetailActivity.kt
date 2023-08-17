@@ -1,35 +1,26 @@
 package com.dokari4.submission1_pokeapi.detail
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.dokari4.submission1_pokeapi.MyApplication
-import com.dokari4.submission1_pokeapi.R
 import com.dokari4.submission1_pokeapi.R.drawable.baseline_favorite_filled_24
 import com.dokari4.submission1_pokeapi.R.drawable.baseline_favorite_unfilled_24
-import com.dokari4.submission1_pokeapi.core.ui.ViewModelFactory
 import com.dokari4.submission1_pokeapi.databinding.ActivityDetailBinding
 import com.dokari4.submission1_pokeapi.domain.model.Movie
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
     companion object {
         const val EXTRA_DATA = "extra_data"
     }
     private lateinit var binding: ActivityDetailBinding
-    private val detailViewModel: DetailViewModel by viewModels {
-        factory
-    }
+    private val detailViewModel: DetailViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -1,31 +1,23 @@
 package com.dokari4.submission1_pokeapi.home
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.dokari4.submission1_pokeapi.MyApplication
 import com.dokari4.submission1_pokeapi.core.data.Resource
 import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
-import com.dokari4.submission1_pokeapi.core.ui.ViewModelFactory
 import com.dokari4.submission1_pokeapi.databinding.ActivityHomeBinding
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-
     private lateinit var binding: ActivityHomeBinding
-    private val homeViewModel: HomeViewModel by viewModels {
-        factory
-    }
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -6,14 +6,19 @@ import com.dokari4.submission1_pokeapi.core.data.local.room.MovieDao
 import com.dokari4.submission1_pokeapi.core.data.local.room.MovieDatabase
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
+@InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
+    //To Provide fun provideMovieDao
     @Singleton
     @Provides
-    fun provideDatabase(context: Context): MovieDatabase =
+    fun provideDatabase(@ApplicationContext context: Context): MovieDatabase =
         Room.databaseBuilder(
             context,
             MovieDatabase::class.java,

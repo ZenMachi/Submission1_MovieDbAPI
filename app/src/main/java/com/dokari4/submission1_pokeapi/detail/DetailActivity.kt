@@ -1,6 +1,7 @@
 package com.dokari4.submission1_pokeapi.detail
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,11 +26,12 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         @Suppress("DEPRECATION")
         val detailMovie = intent.getParcelableExtra<Movie>(EXTRA_DATA)
 
-//        val factory = ViewModelFactory.getInstance(this)
-//        detailViewModel = ViewModelProvider(this, factory)[DetailViewModel::class.java]
 
         showDetail(detailMovie)
     }
@@ -53,10 +55,21 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+            }
+            else -> return false
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     private fun setStatusFavorite(statusFavorite: Boolean) {
         if (statusFavorite) {
             binding.fabFav.setImageDrawable(ContextCompat.getDrawable(this, baseline_favorite_filled_24)) }
         else {
             binding.fabFav.setImageDrawable(ContextCompat.getDrawable(this, baseline_favorite_unfilled_24)) }
     }
+
 }

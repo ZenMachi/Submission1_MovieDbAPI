@@ -2,13 +2,18 @@ package com.dokari4.submission1_pokeapi.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dokari4.submission1_pokeapi.R
 import com.dokari4.submission1_pokeapi.core.data.Resource
 import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
 import com.dokari4.submission1_pokeapi.databinding.ActivityHomeBinding
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
+import com.dokari4.submission1_pokeapi.favorite.FavoriteActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "MovieDB App"
 
         val movieAdapter = MovieAdapter()
         movieAdapter.onItemClick = {selectedData ->
@@ -29,17 +35,20 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-//        val factory = ViewModelFactory.getInstance(this)
-//        homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-
         homeViewModel.movie.observe(this) { movie ->
             if (movie != null) {
                 when (movie) {
+                    is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                     is Resource.Success -> {
+                        binding.progressBar.visibility = View.GONE
                         movieAdapter.setData(movie.data)
                     }
+                    is Resource.Error -> {
+                        binding.progressBar.visibility = View.GONE
+                        binding.viewError.root.visibility = View.VISIBLE
+                        binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                    }
 
-                    else -> {}
                 }
             }
         }
@@ -49,5 +58,21 @@ class HomeActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = movieAdapter
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.btnFavorite -> {
+                val intent = Intent(this,FavoriteActivity::class.java)
+                startActivity(intent)
+            }
+            else -> return false
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

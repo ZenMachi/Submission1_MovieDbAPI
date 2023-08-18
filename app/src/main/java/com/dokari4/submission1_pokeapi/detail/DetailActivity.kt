@@ -8,8 +8,8 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.dokari4.submission1_pokeapi.R.drawable.baseline_favorite_filled_24
 import com.dokari4.submission1_pokeapi.R.drawable.baseline_favorite_unfilled_24
+import com.dokari4.submission1_pokeapi.core.domain.model.Movie
 import com.dokari4.submission1_pokeapi.databinding.ActivityDetailBinding
-import com.dokari4.submission1_pokeapi.domain.model.Movie
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

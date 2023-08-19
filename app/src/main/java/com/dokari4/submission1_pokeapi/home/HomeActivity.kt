@@ -1,6 +1,7 @@
 package com.dokari4.submission1_pokeapi.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,7 +14,6 @@ import com.dokari4.submission1_pokeapi.core.data.Resource
 import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
 import com.dokari4.submission1_pokeapi.databinding.ActivityHomeBinding
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
-import com.dokari4.submission1_pokeapi.favorite.FavoriteActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,7 +68,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.btnFavorite -> {
-                val intent = Intent(this,FavoriteActivity::class.java)
+                val uri = Uri.parse("submission1_pokeapi://favorite")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
                 startActivity(intent)
             }
             else -> return false

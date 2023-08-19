@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Submission1_MovieDbAPI"
 include(":app")
 include(":core")
+include(":Favorite")

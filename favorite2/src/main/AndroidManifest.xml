@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution">
 
-
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_favorite">
+        dist:title="@string/title_favorite2">
         <dist:delivery>
             <dist:install-time />
         </dist:delivery>
@@ -15,16 +14,18 @@
 
     <application>
         <activity
-            android:name=".FavoriteActivity">
+            android:name=".FavoriteActivity"
+            android:exported="true">
+
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="submission1_pokeapi"
-                    android:host="favorite"/>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:scheme="submission1_pokeapi"
+                    android:host="favorite" />
             </intent-filter>
 
         </activity>
-
     </application>
 
 </manifest>

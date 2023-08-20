@@ -1,4 +1,4 @@
-package com.dokari4.submission1_pokeapi.favorite
+package com.dokari4.favorite2
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,16 +11,16 @@ import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
 import com.dokari4.submission1_pokeapi.databinding.ActivityFavoriteBinding
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
 import com.dokari4.submission1_pokeapi.di.FavoriteModuleDepedencies
-import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteActivity : AppCompatActivity() {
-
-//    @Inject
+    @Inject
     lateinit var factory: ViewModelFactory
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels ()
+    private val favoriteViewModel: FavoriteViewModel by viewModels {
+        factory
+    }
 
     private lateinit var binding: ActivityFavoriteBinding
 

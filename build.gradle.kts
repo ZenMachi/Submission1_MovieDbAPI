@@ -33,5 +33,8 @@ buildscript {
         set ("fragment_ktx_version" , "1.2.5")
         set ("hilt_version" , "2.44")
     }
+    repositories {
+        google()
+    }
 
 }

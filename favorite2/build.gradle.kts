@@ -1,27 +1,21 @@
-
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("kotlin-kapt")
 }
 
 apply(from = "../shared_dependencies.gradle")
 
+
 android {
-    namespace = "com.dokari4.submission1_pokeapi"
+    namespace = "com.dokari4.favorite2"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.dokari4.submission1_moviedbapi"
-        multiDexEnabled = true
-        minSdk = 14
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-
+        minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -34,6 +28,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -45,13 +40,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures += setOf(":favorite2")
-}
-
-kapt {
-    correctErrorTypes = true
 }
 
 dependencies {
+    implementation(project(":app"))
     implementation(project(":core"))
+    androidTestImplementation("androidx.annotation:annotation:1.6.0")
 }

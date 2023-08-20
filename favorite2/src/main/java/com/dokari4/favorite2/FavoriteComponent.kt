@@ -1,4 +1,4 @@
-package com.dokari4.submission1_pokeapi.favorite
+package com.dokari4.favorite2
 
 import android.content.Context
 import com.dokari4.submission1_pokeapi.di.FavoriteModuleDepedencies

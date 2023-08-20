@@ -3,4 +3,5 @@
     <string name="something_wrong">Ouch... Something Went Wrong</string>
     <string name="empty_favorite">Add A Favorite Movie</string>
     <string name="title_favorite">Favorite</string>
+    <string name="title_favorite2">favorite2</string>
 </resources>

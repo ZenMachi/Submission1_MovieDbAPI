@@ -69,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.btnFavorite -> {
                 val uri = Uri.parse("submission1_pokeapi://favorite")
-                val intent = Intent(Intent.ACTION_VIEW, uri)
+                val intent = Intent(this, Class.forName("com.dokari4.favorite2.FavoriteActivity"))
                 startActivity(intent)
             }
             else -> return false

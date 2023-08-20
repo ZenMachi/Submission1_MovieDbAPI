@@ -7,8 +7,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.dokari4.favorite2.databinding.ActivityFavoriteBinding
 import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
-import com.dokari4.submission1_pokeapi.databinding.ActivityFavoriteBinding
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
 import com.dokari4.submission1_pokeapi.di.FavoriteModuleDepedencies
 import dagger.hilt.android.EntryPointAccessors

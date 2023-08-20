@@ -15,7 +15,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DatabaseModule {
 
-    //To Provide fun provideMovieDao
+
     @Singleton
     @Provides
     fun provideDatabase(@ApplicationContext context: Context): MovieDatabase =
@@ -26,7 +26,7 @@ class DatabaseModule {
             .fallbackToDestructiveMigration()
             .build()
 
-    //To Provide in LocalDataSource
+
     @Provides
     fun provideMovieDao(database: MovieDatabase): MovieDao = database.movieDao()
 }

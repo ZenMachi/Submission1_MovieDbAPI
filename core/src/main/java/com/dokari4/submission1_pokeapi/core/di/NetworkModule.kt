@@ -26,7 +26,7 @@ class NetworkModule {
 
     }
 
-    //To Provide in RemoteDataSource
+
     @Provides
     fun provideApiService(): ApiService {
         val retrofit = Retrofit.Builder()

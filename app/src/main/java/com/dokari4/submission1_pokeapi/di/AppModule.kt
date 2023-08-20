@@ -13,7 +13,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 abstract class AppModule {
 
-    //To Provide in HomeViewModel and DetailViewModel
+
     @Binds
     @Singleton
     abstract fun provideMovieUseCase(movieUseCaseImpl: MovieUseCaseImpl): MovieUseCase

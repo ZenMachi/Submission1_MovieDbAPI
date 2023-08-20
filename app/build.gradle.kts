@@ -4,8 +4,11 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("kotlin-parcelize")
-
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
+
+apply(from = "../shared_dependencies.gradle")
 
 android {
     namespace = "com.dokari4.submission1_pokeapi"
@@ -13,6 +16,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dokari4.submission1_moviedbapi"
+        multiDexEnabled = true
         minSdk = 14
         targetSdk = 33
         versionCode = 1
@@ -41,39 +45,13 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    dynamicFeatures += setOf(":favorite2")
 }
 
-val glideVersion = rootProject.extra["glide_version"]
-val roomVersion = rootProject.extra["room_version"]
-val retrofitVersion = rootProject.extra["retrofit_version"]
-val loggingInterceptorVersion = rootProject.extra["logging_interceptor_version"]
-val kotlinVersion = rootProject.extra["kotlin_version"]
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
-    val lifecycle_version = "2.6.1"
-
-    // Lifecycles only (without ViewModel or LiveData)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
-
-    // Saved state module for ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
-
-    implementation ("com.github.bumptech.glide:glide:$glideVersion")
-
-    implementation ("androidx.room:room-runtime:$roomVersion")
-    kapt ("androidx.room:room-compiler:$roomVersion")
-    androidTestImplementation ("androidx.room:room-testing:$roomVersion")
-
-    implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation ("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
+    implementation(project(":core"))
 }

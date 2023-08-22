@@ -1,17 +1,12 @@
-version: 2.1
-
-java-version: 
-    default: 17
-    description: |
-      The version of OpenJDK to change to
-    type: integer
-
+version: '2.1'
 orbs:
-  android: circleci/android@0.2.1
- 
+  android: circleci/android@2.0
 jobs:
   build:
-    executor: android/android
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: 2023.07.1
     steps:
       - checkout
       - restore_cache:
@@ -41,3 +36,7 @@ jobs:
       - store_artifacts:  
           path: app/build/outputs/apk/debug/
           destination: artifact-file
+workflows:
+  test:
+    jobs:
+      - build

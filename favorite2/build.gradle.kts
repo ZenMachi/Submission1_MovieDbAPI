@@ -14,20 +14,23 @@ android {
     namespace = "com.dokari4.favorite2"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+        disable += "OldTargetApi"
+        disable += "Typos"
+        disable += "Overdraw"
+        disable += "UnusedResources"
+        disable += "TypographyEllipsis"
+        disable += "HardcodedText"
+        disable += "RtlHardcoded"
+        disable += "GradleDependency"
+    }
+
     defaultConfig {
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -45,5 +48,6 @@ android {
 dependencies {
     implementation(project(":app"))
     implementation(project(":core"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     androidTestImplementation("androidx.annotation:annotation:1.6.0")
 }

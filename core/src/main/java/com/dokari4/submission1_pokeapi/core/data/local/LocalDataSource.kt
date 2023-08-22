@@ -1,6 +1,5 @@
 package com.dokari4.submission1_pokeapi.core.data.local
 
-import androidx.lifecycle.LiveData
 import com.dokari4.submission1_pokeapi.core.data.local.entity.MovieEntity
 import com.dokari4.submission1_pokeapi.core.data.local.room.MovieDao
 import io.reactivex.Flowable

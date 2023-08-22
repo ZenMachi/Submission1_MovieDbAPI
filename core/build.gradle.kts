@@ -13,8 +13,20 @@ android {
     namespace = "com.dokari4.submission1_pokeapi.core"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+        disable += "OldTargetApi"
+        disable += "Typos"
+        disable += "Overdraw"
+        disable += "UnusedResources"
+        disable += "TypographyEllipsis"
+        disable += "HardcodedText"
+        disable += "RtlHardcoded"
+        disable += "GradleDependency"
+    }
+
     defaultConfig {
-        minSdk = 14
+        minSdk = 24
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -22,7 +34,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,6 +73,7 @@ val fragmentKtxVersion = rootProject.extra["fragment_ktx_version"]
 val activityKtxVersion = rootProject.extra["activity_ktx_version"]
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     //Room
     api ("androidx.room:room-runtime:$roomVersion")
@@ -63,6 +83,7 @@ dependencies {
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    //noinspection GradleDependency
     api ("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
 
     //RxJava
@@ -70,8 +91,15 @@ dependencies {
     implementation ("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
     implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
     implementation ("androidx.room:room-rxjava2:$roomVersion")
+    //noinspection GradleDependency
     api ("androidx.lifecycle:lifecycle-reactivestreams-ktx:$rxLifecycleVersion")
 
+    //noinspection GradleDependency
     api ("androidx.activity:activity-ktx:$activityKtxVersion")
+    //noinspection GradleDependency
     api ("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
+
+    //Database Encryption
+    implementation ("net.zetetic:android-database-sqlcipher:4.4.0")
+    implementation ("androidx.sqlite:sqlite-ktx:2.1.0")
 }

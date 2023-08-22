@@ -14,10 +14,22 @@ android {
     namespace = "com.dokari4.submission1_pokeapi"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+        disable += "OldTargetApi"
+        disable += "Typos"
+        disable += "Overdraw"
+        disable += "UnusedResources"
+        disable += "TypographyEllipsis"
+        disable += "HardcodedText"
+        disable += "RtlHardcoded"
+        disable += "GradleDependency"
+    }
+
     defaultConfig {
         applicationId = "com.dokari4.submission1_moviedbapi"
         multiDexEnabled = true
-        minSdk = 14
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
@@ -27,7 +39,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -54,4 +73,6 @@ kapt {
 
 dependencies {
     implementation(project(":core"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }

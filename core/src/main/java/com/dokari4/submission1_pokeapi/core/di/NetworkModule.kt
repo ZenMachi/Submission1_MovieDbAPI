@@ -1,6 +1,6 @@
 package com.dokari4.submission1_pokeapi.core.di
 
-import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

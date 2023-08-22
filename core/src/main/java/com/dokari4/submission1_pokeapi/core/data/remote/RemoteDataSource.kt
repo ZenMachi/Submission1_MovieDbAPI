@@ -2,7 +2,7 @@ package com.dokari4.submission1_pokeapi.core.data.remote
 
 import android.annotation.SuppressLint
 import android.util.Log
-import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiService
 import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.data.remote.response.MovieResponse
 import io.reactivex.BackpressureStrategy

@@ -37,6 +37,6 @@ jobs:
           path: app/build/outputs/apk/debug/
           destination: artifact-file
 workflows:
-  test:
+  build:
     jobs:
       - build

@@ -16,9 +16,7 @@ android {
 
     lint {
         baseline = file("lint-baseline.xml")
-        quiet = true
-        abortOnError = false
-        ignoreWarnings = true
+        disable += "OldTargetApi" + "Typos" + "Overdraw" + "UnusedResources" + "TypographyEllipsis" + "HardcodedText" + "RtlHardcoded"
     }
 
     defaultConfig {

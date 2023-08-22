@@ -90,4 +90,8 @@ dependencies {
     api ("androidx.activity:activity-ktx:$activityKtxVersion")
     //noinspection GradleDependency
     api ("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
+
+    //Database Encryption
+    implementation ("net.zetetic:android-database-sqlcipher:4.4.0")
+    implementation ("androidx.sqlite:sqlite-ktx:2.1.0")
 }

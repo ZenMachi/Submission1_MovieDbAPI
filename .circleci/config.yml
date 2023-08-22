@@ -24,7 +24,7 @@ jobs:
             - ~/.android/cache
       - run:
           name: Run Build
-          command: ./gradlew build
+          command: ./gradlew build -x lint
       - run:
           name: Run Tests
           command: ./gradlew lint test

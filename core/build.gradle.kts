@@ -15,7 +15,13 @@ android {
 
     lint {
         baseline = file("lint-baseline.xml")
-        disable += "OldTargetApi" + "Typos" + "Overdraw" + "UnusedResources" + "TypographyEllipsis" + "HardcodedText" + "RtlHardcoded"
+        disable += "OldTargetApi"
+        disable += "Typos"
+        disable += "Overdraw"
+        disable += "UnusedResources"
+        disable += "TypographyEllipsis"
+        disable += "HardcodedText"
+        disable += "RtlHardcoded"
     }
 
     defaultConfig {
@@ -68,6 +74,7 @@ dependencies {
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    //noinspection GradleDependency
     api ("com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion")
 
     //RxJava
@@ -75,8 +82,11 @@ dependencies {
     implementation ("io.reactivex.rxjava2:rxandroid:$rxAndroidVersion")
     implementation ("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
     implementation ("androidx.room:room-rxjava2:$roomVersion")
+    //noinspection GradleDependency
     api ("androidx.lifecycle:lifecycle-reactivestreams-ktx:$rxLifecycleVersion")
 
+    //noinspection GradleDependency
     api ("androidx.activity:activity-ktx:$activityKtxVersion")
+    //noinspection GradleDependency
     api ("androidx.fragment:fragment-ktx:$fragmentKtxVersion")
 }

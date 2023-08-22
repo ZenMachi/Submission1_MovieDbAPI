@@ -23,6 +23,7 @@ android {
         disable += "TypographyEllipsis"
         disable += "HardcodedText"
         disable += "RtlHardcoded"
+        disable += "GradleDependency"
     }
 
     defaultConfig {

@@ -39,7 +39,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -66,5 +73,6 @@ kapt {
 
 dependencies {
     implementation(project(":core"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }

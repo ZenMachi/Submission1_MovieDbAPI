@@ -34,7 +34,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -66,6 +73,7 @@ val fragmentKtxVersion = rootProject.extra["fragment_ktx_version"]
 val activityKtxVersion = rootProject.extra["activity_ktx_version"]
 
 dependencies {
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
     //Room
     api ("androidx.room:room-runtime:$roomVersion")

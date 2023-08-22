@@ -12,18 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:scaleType="fitCenter"
-        android:background="#59000000"
+        android:background="@color/bg_image"
         android:src="@drawable/baseline_broken_image_24"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/imgMovie" />
 
     <TextView
         android:id="@+id/tvMovieName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="Ini Judul Movie"
+        tools:text="@string/tvMovieTitle"
         app:layout_constraintTop_toBottomOf="@id/imgMovie"
         app:layout_constraintStart_toStartOf="parent"/>
 
@@ -41,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Synopsis"
+        android:text="@string/tvSynopsis"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/divider"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -50,7 +51,7 @@
         android:id="@+id/tvMovieOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ini Overview Movienya"
+        tools:text="@string/tvMovieOverview"
         android:layout_marginTop="12dp"
         app:layout_constraintTop_toBottomOf="@id/tvSynopsis"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -62,6 +63,8 @@
         android:src="@drawable/baseline_favorite_unfilled_24"
         android:layout_marginBottom="24dp"
         android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:contentDescription="@string/fabFav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

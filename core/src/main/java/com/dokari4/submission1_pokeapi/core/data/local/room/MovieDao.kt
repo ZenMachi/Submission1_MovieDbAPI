@@ -1,6 +1,5 @@
 package com.dokari4.submission1_pokeapi.core.data.local.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

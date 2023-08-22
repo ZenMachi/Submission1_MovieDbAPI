@@ -1,6 +1,6 @@
 package com.dokari4.submission1_pokeapi.core.data
 
-import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.data.local.LocalDataSource
 import com.dokari4.submission1_pokeapi.core.data.remote.RemoteDataSource
 import com.dokari4.submission1_pokeapi.core.data.remote.response.MovieResponse

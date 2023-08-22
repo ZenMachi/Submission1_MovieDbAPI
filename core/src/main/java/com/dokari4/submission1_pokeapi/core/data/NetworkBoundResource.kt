@@ -1,6 +1,6 @@
 package com.dokari4.submission1_pokeapi.core.data
 
-import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.utils.AppExecutors
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable

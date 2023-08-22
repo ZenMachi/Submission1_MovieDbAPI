@@ -15,9 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
 
-    companion object {
-        const val EXTRA_DATA = "extra_data"
-    }
     private lateinit var binding: ActivityDetailBinding
     private val detailViewModel: DetailViewModel by viewModels()
 
@@ -70,6 +67,10 @@ class DetailActivity : AppCompatActivity() {
             binding.fabFav.setImageDrawable(ContextCompat.getDrawable(this, baseline_favorite_filled_24)) }
         else {
             binding.fabFav.setImageDrawable(ContextCompat.getDrawable(this, baseline_favorite_unfilled_24)) }
+    }
+
+    companion object {
+        const val EXTRA_DATA = "extra_data"
     }
 
 }

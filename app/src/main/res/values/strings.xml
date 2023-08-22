@@ -4,4 +4,9 @@
     <string name="empty_favorite">Add A Favorite Movie</string>
     <string name="title_favorite">Favorite</string>
     <string name="title_favorite2">favorite2</string>
+    <string name="fabFav">Tombol Favorite Movie</string>
+    <string name="imgMovie">Ini Poster Gambar</string>
+    <string name="tvMovieTitle">Ini Judul Movie</string>
+    <string name="tvMovieOverview">Ini Overview Movienya</string>
+    <string name="tvSynopsis">Synopsis</string>
 </resources>

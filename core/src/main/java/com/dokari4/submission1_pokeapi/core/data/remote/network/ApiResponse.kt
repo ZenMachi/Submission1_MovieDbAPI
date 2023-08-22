@@ -1,4 +1,4 @@
-package com.dicoding.tourismapp.core.data.source.remote.network
+package com.dokari4.submission1_pokeapi.core.data.remote.network
 
 sealed class ApiResponse<out R> {
     data class Success<out T>(val data: T) : ApiResponse<T>()

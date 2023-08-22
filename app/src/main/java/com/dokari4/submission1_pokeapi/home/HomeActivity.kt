@@ -1,7 +1,6 @@
 package com.dokari4.submission1_pokeapi.home
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -44,9 +43,11 @@ class HomeActivity : AppCompatActivity() {
                         movieAdapter.setData(movie.data)
                     }
                     is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                        with(binding) {
+                            progressBar.visibility = View.GONE
+                            viewError.root.visibility = View.VISIBLE
+                            viewError.tvError.text = movie.message ?: getString(R.string.something_wrong)
+                        }
                     }
 
                 }
@@ -68,7 +69,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.btnFavorite -> {
-                val uri = Uri.parse("submission1_pokeapi://favorite")
                 val intent = Intent(this, Class.forName("com.dokari4.favorite2.FavoriteActivity"))
                 startActivity(intent)
             }

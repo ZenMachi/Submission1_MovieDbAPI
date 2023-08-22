@@ -1,20 +1,14 @@
 package com.dokari4.submission1_pokeapi.core.data.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import com.dicoding.tourismapp.core.data.source.remote.network.ApiResponse
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dicoding.tourismapp.core.data.source.remote.network.ApiService
-import com.dokari4.submission1_pokeapi.core.data.remote.response.ListMovieResponse
 import com.dokari4.submission1_pokeapi.core.data.remote.response.MovieResponse
 import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
 

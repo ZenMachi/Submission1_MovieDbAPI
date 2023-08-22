@@ -7,7 +7,7 @@ import dagger.hilt.components.SingletonComponent
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
-interface FavoriteModuleDepedencies {
+interface FavoriteModuleDependencies {
 
     fun movieUseCase(): MovieUseCase
 

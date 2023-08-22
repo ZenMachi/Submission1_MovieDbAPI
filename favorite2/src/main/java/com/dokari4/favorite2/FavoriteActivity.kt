@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.dokari4.favorite2.databinding.ActivityFavoriteBinding
 import com.dokari4.submission1_pokeapi.core.ui.MovieAdapter
 import com.dokari4.submission1_pokeapi.detail.DetailActivity
-import com.dokari4.submission1_pokeapi.di.FavoriteModuleDepedencies
+import com.dokari4.submission1_pokeapi.di.FavoriteModuleDependencies
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class FavoriteActivity : AppCompatActivity() {
             .appDependencies(
                 EntryPointAccessors.fromApplication(
                     applicationContext,
-                    FavoriteModuleDepedencies::class.java
+                    FavoriteModuleDependencies::class.java
                 )
             )
             .build()

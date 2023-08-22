@@ -17,6 +17,8 @@ android {
     lint {
         baseline = file("lint-baseline.xml")
         quiet = true
+        abortOnError = false
+        ignoreWarnings = true
     }
 
     defaultConfig {

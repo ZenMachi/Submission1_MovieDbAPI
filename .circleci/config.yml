@@ -7,7 +7,7 @@ jobs:
       name: android/android-machine
       resource-class: large
       tag: 2023.07.1
-    parallelism: 4
+    parallelism: 2
     steps:
       - checkout
       - restore_cache:

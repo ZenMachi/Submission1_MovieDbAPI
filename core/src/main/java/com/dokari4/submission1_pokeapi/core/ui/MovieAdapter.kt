@@ -1,5 +1,6 @@
 package com.dokari4.submission1_pokeapi.core.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     private var listData = ArrayList<Movie>()
     var onItemClick: ((Movie) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<Movie>?) {
         if (newListData.isNullOrEmpty()) return
         listData.clear()

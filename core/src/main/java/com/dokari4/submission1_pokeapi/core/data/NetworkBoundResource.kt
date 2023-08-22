@@ -1,5 +1,6 @@
 package com.dokari4.submission1_pokeapi.core.data
 
+import android.annotation.SuppressLint
 import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.utils.AppExecutors
 import io.reactivex.BackpressureStrategy
@@ -9,6 +10,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
 
+@SuppressLint("CheckResult")
 abstract class NetworkBoundResource<ResultType, RequestType>(private val mExecutors: AppExecutors) {
 
     private val result = PublishSubject.create<Resource<ResultType>>()

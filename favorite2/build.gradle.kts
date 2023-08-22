@@ -16,7 +16,7 @@ android {
 
     lint {
         baseline = file("lint-baseline.xml")
-        disable
+        quiet = true
     }
 
     defaultConfig {

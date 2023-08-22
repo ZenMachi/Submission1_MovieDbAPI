@@ -14,10 +14,14 @@ android {
     namespace = "com.dokari4.submission1_pokeapi"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
         applicationId = "com.dokari4.submission1_moviedbapi"
         multiDexEnabled = true
-        minSdk = 14
+        minSdk = 24
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"

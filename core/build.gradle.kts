@@ -13,8 +13,12 @@ android {
     namespace = "com.dokari4.submission1_pokeapi.core"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
-        minSdk = 14
+        minSdk = 24
         multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

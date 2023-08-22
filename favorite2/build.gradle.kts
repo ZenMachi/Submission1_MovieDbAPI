@@ -14,6 +14,10 @@ android {
     namespace = "com.dokari4.favorite2"
     compileSdk = 33
 
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+
     defaultConfig {
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

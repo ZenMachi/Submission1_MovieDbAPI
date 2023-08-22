@@ -15,6 +15,7 @@ android {
 
     lint {
         baseline = file("lint-baseline.xml")
+        disable
     }
 
     defaultConfig {

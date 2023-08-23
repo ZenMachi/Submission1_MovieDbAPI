@@ -16,6 +16,9 @@ class LocalDataSource @Inject constructor(private val movieDao: MovieDao) {
 
     fun insertMovie(movieList: List<MovieEntity>) = movieDao.insertMovie(movieList)
 
+    fun getMovieDetail(movieId: Int): Flowable<Boolean> = movieDao.getMovieDetail(movieId)
+
+
     fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
         movie.isFavorite = newState
         movieDao.updateFavoriteMovie(movie)

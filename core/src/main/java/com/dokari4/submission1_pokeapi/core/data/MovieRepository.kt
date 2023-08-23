@@ -1,8 +1,8 @@
 package com.dokari4.submission1_pokeapi.core.data
 
-import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.data.local.LocalDataSource
 import com.dokari4.submission1_pokeapi.core.data.remote.RemoteDataSource
+import com.dokari4.submission1_pokeapi.core.data.remote.network.ApiResponse
 import com.dokari4.submission1_pokeapi.core.data.remote.response.MovieResponse
 import com.dokari4.submission1_pokeapi.core.domain.model.Movie
 import com.dokari4.submission1_pokeapi.core.domain.repository.IMovieRepository
@@ -53,6 +53,10 @@ class MovieRepository @Inject constructor(
         return localDataSource.getFavoriteMovie().map {
             DataMapper.mapEntitiesToDomain(it)
         }
+    }
+
+    override fun getMovieDetail(movieId: Int): Flowable<Boolean> {
+        return localDataSource.getMovieDetail(movieId)
     }
 
     override fun setFavoriteMovie(movie: Movie, state: Boolean) {

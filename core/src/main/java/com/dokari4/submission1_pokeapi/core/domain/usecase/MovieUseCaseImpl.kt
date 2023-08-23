@@ -14,6 +14,9 @@ class MovieUseCaseImpl @Inject constructor(private val movieRepository: IMovieRe
     override fun getFavoriteMovie(): Flowable<List<Movie>> =
         movieRepository.getFavoriteMovie()
 
+    override fun getMovieDetail(movieId: Int): Flowable<Boolean> =
+        movieRepository.getMovieDetail(movieId)
+
     override fun setFavoriteMovie(movie: Movie, state: Boolean) =
         movieRepository.setFavoriteMovie(movie, state)
 }

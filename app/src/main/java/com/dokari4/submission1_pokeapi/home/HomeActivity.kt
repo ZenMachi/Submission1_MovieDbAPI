@@ -76,4 +76,19 @@ class HomeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (isTaskRoot) {
+            finishAfterTransition()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        finishAfterTransition()
+    }
 }

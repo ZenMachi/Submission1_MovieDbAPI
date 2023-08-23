@@ -21,6 +21,9 @@ interface MovieDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertMovie(movie: List<MovieEntity>): Completable
 
+    @Query("select EXISTS (select 1 from movie where id = :movieId AND isFavorite = 1)")
+    fun getMovieDetail(movieId: Int): Flowable<Boolean>
+
     @Update
     fun updateFavoriteMovie(movie: MovieEntity)
 }
